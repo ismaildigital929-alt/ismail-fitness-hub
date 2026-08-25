@@ -1,24 +1,54 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/Navbar";
+import { Hero } from "@/sections/Hero";
+import { About } from "@/sections/About";
+import { Programs } from "@/sections/Programs";
+import { WhyUs } from "@/sections/WhyUs";
+import { Trainers } from "@/sections/Trainers";
+import { Results } from "@/sections/Results";
+import { Pricing } from "@/sections/Pricing";
+import { CtaSection } from "@/sections/CtaSection";
+import { ContactSection } from "@/sections/ContactSection";
+import { Footer } from "@/sections/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Ismail Digital | Premium Gym & Fitness Center" },
+      {
+        name: "description",
+        content:
+          "Build your strongest self at Ismail Digital — a premium 24/7 gym with expert trainers, modern equipment and results-driven programs. Join today.",
+      },
+      { property: "og:title", content: "Ismail Digital | Premium Gym & Fitness Center" },
+      {
+        property: "og:description",
+        content:
+          "Train harder. Move better. Become stronger. Premium gym, expert coaching and a motivating community — 24/7 access.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Programs />
+        <WhyUs />
+        <Trainers />
+        <Results />
+        <Pricing />
+        <CtaSection />
+        <ContactSection />
+      </main>
+      <Footer />
     </div>
   );
 }
