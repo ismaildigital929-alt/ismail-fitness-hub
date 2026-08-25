@@ -14,8 +14,8 @@ export function CountUp({ value, suffix = "", duration = 1600 }: CountUpProps) {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return;
         observer.disconnect();
         const start = performance.now();
         const tick = (now: number) => {
