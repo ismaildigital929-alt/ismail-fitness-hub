@@ -14,22 +14,20 @@ export function SectionHeading({
   description,
   align = "center",
 }: SectionHeadingProps) {
-  const alignClass = align === "center" ? "items-center text-center" : "items-start text-left";
+  const alignClass =
+    align === "center" ? "items-center text-center mx-auto" : "items-start text-left";
 
   return (
-    <Reveal className={`flex flex-col gap-4 ${alignClass}`}>
-      <span className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.35em] text-primary">
-        <span className="h-px w-8 bg-primary" aria-hidden="true" />
+    <Reveal className={`flex max-w-3xl flex-col gap-5 ${alignClass}`}>
+      <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.4em] text-primary">
+        <span className="h-px w-8 bg-primary/60" aria-hidden="true" />
         {eyebrow}
-        {align === "center" && <span className="h-px w-8 bg-primary" aria-hidden="true" />}
       </span>
-      <h2 className="font-display text-4xl font-extrabold uppercase leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+      <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
         {title}
       </h2>
       {description && (
-        <p className="max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-          {description}
-        </p>
+        <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{description}</p>
       )}
     </Reveal>
   );
