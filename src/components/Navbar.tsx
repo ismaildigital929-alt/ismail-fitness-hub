@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
-import { Dumbbell, Menu, X } from "lucide-react";
-
-const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Programs", href: "#programs" },
-  { label: "Trainers", href: "#trainers" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
-];
+import { Menu, X } from "lucide-react";
+import { NAV_LINKS, BRAND } from "@/content/site";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -25,7 +17,7 @@ export function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled || menuOpen
-          ? "border-b border-border bg-background/90 backdrop-blur-md"
+          ? "border-b border-border bg-background/85 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -33,21 +25,20 @@ export function Navbar() {
         className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8"
         aria-label="Main navigation"
       >
-        <a href="#home" className="flex items-center gap-2" aria-label="Ismail Digital home">
-          <span className="flex h-9 w-9 items-center justify-center bg-primary text-primary-foreground">
-            <Dumbbell className="h-5 w-5" strokeWidth={2.5} />
-          </span>
-          <span className="font-display text-lg font-extrabold uppercase tracking-widest text-foreground">
-            Ismail<span className="text-primary">Digital</span>
-          </span>
+        <a
+          href="#home"
+          className="font-display text-lg font-bold tracking-[0.28em] text-foreground transition-colors hover:text-primary"
+          aria-label={`${BRAND.name} home`}
+        >
+          ISMAIL<span className="text-primary">IFY</span>
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-9 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-semibold uppercase tracking-wider text-muted-foreground transition-colors duration-200 hover:text-primary"
+                className="relative text-sm font-medium text-muted-foreground transition-colors duration-200 after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:text-foreground hover:after:w-full"
               >
                 {link.label}
               </a>
@@ -57,10 +48,10 @@ export function Navbar() {
 
         <div className="flex items-center gap-3">
           <a
-            href="#pricing"
-            className="hidden bg-primary px-6 py-3 text-sm font-extrabold uppercase tracking-wider text-primary-foreground transition-all duration-300 hover:shadow-glow sm:inline-block"
+            href="#contact"
+            className="hidden border border-primary/60 bg-primary/10 px-6 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:shadow-glow sm:inline-block"
           >
-            Join Now
+            Let&rsquo;s Talk
           </a>
           <button
             type="button"
@@ -75,8 +66,8 @@ export function Navbar() {
       </nav>
 
       <div
-        className={`overflow-hidden border-border bg-background/95 backdrop-blur-md transition-all duration-300 ease-out lg:hidden ${
-          menuOpen ? "max-h-[26rem] border-b" : "max-h-0"
+        className={`overflow-hidden border-border bg-background/95 backdrop-blur-xl transition-all duration-300 ease-out lg:hidden ${
+          menuOpen ? "max-h-[28rem] border-b" : "max-h-0"
         }`}
       >
         <ul className="space-y-1 px-5 py-4">
@@ -85,7 +76,7 @@ export function Navbar() {
               <a
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="block px-2 py-3 text-sm font-bold uppercase tracking-widest text-foreground transition-colors hover:text-primary"
+                className="block px-2 py-3 text-sm font-semibold tracking-wide text-foreground transition-colors hover:text-primary"
               >
                 {link.label}
               </a>
@@ -93,11 +84,11 @@ export function Navbar() {
           ))}
           <li className="pt-2">
             <a
-              href="#pricing"
+              href="#contact"
               onClick={() => setMenuOpen(false)}
-              className="block bg-primary px-4 py-3 text-center text-sm font-extrabold uppercase tracking-wider text-primary-foreground"
+              className="block bg-primary px-4 py-3 text-center text-sm font-bold text-primary-foreground"
             >
-              Join Now
+              Let&rsquo;s Talk
             </a>
           </li>
         </ul>
